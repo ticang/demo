@@ -250,6 +250,15 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.ailk.ecs.open</groupId>
+            <artifactId>openesb-client</artifactId>
+            <version>21.6.24</version>
+            <scope>system</scope>
+            <optional>true</optional>
+            <systemPath>${project.basedir}/src/main/resources/lib/openesb-client-21.6.24.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
     <build>
