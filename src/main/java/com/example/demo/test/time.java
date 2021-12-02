@@ -32,6 +32,23 @@ public class time {
         calendar1.add(Calendar.YEAR, -3);
         String date1 = simpleDateFormat.format(calendar1.getTime());
         System.out.println(date+ "111"+date1);
+        String preDay = getPreDay("20210211");
+        System.out.println("11111111"+preDay);
+    }
 
+    private static String getPreDay(String strData) {
+        String preDate = "";
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        Date date = null;
+        try {
+            date = sdf.parse(strData);
+            System.out.println(date);
+        } catch (java.text.ParseException e) {
+            System.out.println(e);
+        }
+
+        preDate = sdf.format(date);
+        return preDate;
     }
 }
