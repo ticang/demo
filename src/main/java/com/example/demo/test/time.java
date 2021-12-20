@@ -6,7 +6,15 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class time {
+
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyMMdd");
+
     public static void main(String[] args) throws ParseException {
+
+        long minDay = getMinDay("20201207");
+        System.out.println(minDay);
+
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         SimpleDateFormat maxDateSDF = new SimpleDateFormat("yyyyMMdd");
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -50,5 +58,12 @@ public class time {
 
         preDate = sdf.format(date);
         return preDate;
+    }
+
+    public static long getMinDay(String netDate) throws ParseException {
+        Date d1 = DATE_FORMAT.parse(netDate);
+        Date d2 = new Date();
+        long diff = (d2.getTime() - d1.getTime())/(1000 * 60 * 60 * 24);
+        return  diff;
     }
 }

@@ -16,7 +16,25 @@ import java.util.stream.Collectors;
 
 public class stringTest {
     public static void main(String[] args) {
-        BigDecimal bigDecimal = new BigDecimal("20.001");
+
+        String appProportion = new BigDecimal("4").divide(new BigDecimal("3"), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal("100")).setScale(2, BigDecimal.ROUND_HALF_UP).toString();;
+//        String appTotalProportion = appProportion.multiply(new BigDecimal("100")).setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+
+        System.out.println(appProportion);
+//        String appTotalProportion = Float.parseFloat(appProportion) * 100 + "%";
+//        System.out.println(appTotalProportion);
+
+        switch ("222") {
+            case "1" :
+                break;
+            default:
+                System.out.println("111");
+        }
+        long l = Long.parseLong("12323123");
+        if (l > 3232) {
+            System.out.println(l);
+        }
+        BigDecimal bigDecimal = new BigDecimal("23.001");
         System.out.println(bigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP).stripTrailingZeros().toPlainString());
         int i = 0;
         while(i++<5){

@@ -6,6 +6,17 @@ import java.util.*;
 
 public class ListTest {
     public static void main(String[] args) {
+
+        System.out.println(String.format("%.2f", Double.parseDouble("12.23432")));
+        System.out.println(String.format("%.2f", Double.parseDouble("12.2")));
+        System.out.println(Double.parseDouble("12.2"));
+        System.out.println(Double.parseDouble("12"));
+
+        int[] strings = {1,21,234,34,3,34,5,5,56,6,64,3,543,534,534,5643,5,436,34,6,34654,6,654,654,67};
+        int[] ints = Arrays.copyOfRange(strings, 0, 15);
+        System.out.println(ints[14]);
+
+
         List<String> list1 = new ArrayList<>();
         list1.add("111");
         list1.add("121");
