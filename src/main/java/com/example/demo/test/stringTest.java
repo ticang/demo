@@ -17,7 +17,9 @@ import java.util.stream.Collectors;
 public class stringTest {
     public static void main(String[] args) {
 
-        String appProportion = new BigDecimal("4").divide(new BigDecimal("3"), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal("100")).setScale(2, BigDecimal.ROUND_HALF_UP).toString();;
+        System.out.println(new BigDecimal("1.232432E3"));
+
+        String appProportion = new BigDecimal("3").divide(new BigDecimal("8"), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal("100")).setScale(2, BigDecimal.ROUND_HALF_UP).toString();;
 //        String appTotalProportion = appProportion.multiply(new BigDecimal("100")).setScale(2, BigDecimal.ROUND_HALF_UP).toString();
 
         System.out.println(appProportion);
