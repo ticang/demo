@@ -1,11 +1,83 @@
 package com.example.demo.test;
 
+import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
-
+import java.util.stream.Collectors;
+@Slf4j
 public class ListTest {
     public static void main(String[] args) {
+
+        List<Map<String,String>> resultList = new ArrayList<>();
+        resultList.add(new HashMap<String, String>() {{
+                put("provinceCode", "09");
+                put("touchType", "RH02");
+                put("ord", "1");
+        }});
+        resultList.add(new HashMap<String, String>() {{
+            put("provinceCode", "09");
+            put("touchType", "RH02");
+            put("ord", "2");
+        }});
+        resultList.add(new HashMap<String, String>() {{
+            put("provinceCode", "09");
+            put("touchType", "RH03");
+            put("ord", "3");
+        }});
+        resultList.add(new HashMap<String, String>() {{
+            put("provinceCode", "09");
+            put("touchType", "RH03");
+            put("ord", "8");
+        }});
+        resultList.add(new HashMap<String, String>() {{
+            put("provinceCode", "09");
+            put("touchType", "RH03");
+            put("ord", "4");
+        }});
+        resultList.add(new HashMap<String, String>() {{
+            put("provinceCode", "09");
+            put("touchType", "RH01");
+            put("ord", "5");
+        }});
+        resultList.add(new HashMap<String, String>() {{
+            put("provinceCode", "09");
+            put("touchType", "RH01");
+        }});
+        resultList.add(new HashMap<String, String>() {{
+            put("provinceCode", "09");
+            put("touchType", "RH04");
+            put("ord", "6");
+        }});
+        resultList.add(new HashMap<String, String>() {{
+            put("provinceCode", "09");
+            put("touchType", "RH04");
+        }});
+        resultList.add(new HashMap<String, String>() {{
+            put("provinceCode", "09");
+            put("touchType", "RH04");
+        }});
+
+        log.info("广告位推荐信息==>{}", JSONObject.toJSONString(resultList));
+        //先省份后总部
+        List<Map<String, String>> filterResultList = resultList.stream().filter(x -> (!StringUtils.isEmpty(x.get("provinceCode")) && !"09".equals(x.get("provinceCode")))).collect(Collectors.toList());
+
+        //多个省取第一个
+        if (!CollectionUtils.isEmpty(filterResultList)) {
+            Map<String, List<Map<String, String>>> filterResultListMap = filterResultList.stream().collect(Collectors.groupingBy(x -> x.get("provinceCode"),LinkedHashMap::new,Collectors.toList()));
+            log.info("广告位推荐信息==>{}", JSONObject.toJSONString(filterResultListMap));
+            resultList = filterResultListMap.values().stream().findFirst().get();
+        }
+        log.info("广告位推荐信息==>{}", JSONObject.toJSONString(resultList));
+
+        Map<String, List<Map<String, String>>> touchType = resultList.stream().collect(Collectors.groupingBy(x -> x.get("touchType"),LinkedHashMap::new,Collectors.toList()));
+        List<Map<String, String>> returnList = new ArrayList<>();
+        touchType.values().forEach(x-> returnList.add(x.get(0)));
+        log.info("广告位推荐信息==>{}", JSONObject.toJSONString(returnList));
+        resultList = returnList.stream().sorted(Comparator.comparing(e -> e.get("touchType"), Comparator.reverseOrder())).collect(Collectors.toList());
+        log.info("广告位推荐信息==>{}", JSONObject.toJSONString(resultList));
 
         System.out.println(String.format("%.2f", Double.parseDouble("12.23432")));
         System.out.println(String.format("%.2f", Double.parseDouble("12.2")));
