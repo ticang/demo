@@ -4,13 +4,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
 
 public class time {
 
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyMMdd");
 
     public static void main(String[] args) throws ParseException {
+        Scanner scanner = new Scanner(System.in);
+        while(scanner.hasNext()) {
 
+            int a = getMonth(scanner.nextLine());
+            System.out.println(a);
+        }
         long minDay = getMinDay("20201207");
         System.out.println(minDay);
 
@@ -65,5 +71,21 @@ public class time {
         Date d2 = new Date();
         long diff = (d2.getTime() - d1.getTime())/(1000 * 60 * 60 * 24);
         return  diff;
+    }
+
+    public static int getMonth(String start1) throws ParseException {
+        Date end = DATE_FORMAT.parse("20211231");
+        Date start = DATE_FORMAT.parse(start1);
+        Calendar startCalendar = Calendar.getInstance();
+        startCalendar.setTime(start);
+        Calendar endCalendar = Calendar.getInstance();
+        endCalendar.setTime(end);
+        Calendar temp = Calendar.getInstance();
+        temp.setTime(end);
+        temp.add(Calendar.DATE, 1);
+        int year = endCalendar.get(Calendar.YEAR) - startCalendar.get(Calendar.YEAR);
+        int month = endCalendar.get(Calendar.MONTH) - startCalendar.get(Calendar.MONTH);
+        return year * 12 + month + 1;
+
     }
 }

@@ -54,6 +54,7 @@ public class ListTest {
         resultList.add(new HashMap<String, String>() {{
             put("provinceCode", "09");
             put("touchType", "RH04");
+            put("ord", "0");
         }});
         resultList.add(new HashMap<String, String>() {{
             put("provinceCode", "09");

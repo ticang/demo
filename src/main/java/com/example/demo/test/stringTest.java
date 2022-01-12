@@ -1,24 +1,27 @@
 package com.example.demo.test;
 
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 import java.math.BigDecimal;
-import java.security.GeneralSecurityException;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class stringTest {
+    private static Boolean checkNotZero(String str) {
+        if (str != null && !"".equals(str) && !"NULL".equals(str)) {
+            if ("0".equals(str) || "0.0".equals(str)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
-
-        System.out.println(new BigDecimal("1.232432E3"));
-
+        System.out.println(checkNotZero("0.0"));
+        System.out.println(new BigDecimal("1.232432E9").divide(new BigDecimal("10"), 0, BigDecimal.ROUND_HALF_UP).toString());
+        System.out.println(String.format("%.2f", Double.parseDouble("0")));
         String appProportion = new BigDecimal("3").divide(new BigDecimal("8"), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal("100")).setScale(2, BigDecimal.ROUND_HALF_UP).toString();;
 //        String appTotalProportion = appProportion.multiply(new BigDecimal("100")).setScale(2, BigDecimal.ROUND_HALF_UP).toString();
 
