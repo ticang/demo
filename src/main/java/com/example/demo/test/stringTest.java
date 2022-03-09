@@ -1,9 +1,12 @@
 package com.example.demo.test;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,7 +22,20 @@ public class stringTest {
         return false;
     }
     public static void main(String[] args) {
-        System.out.println(checkNotZero("0.0"));
+
+        String phoneNumber = "12345678910";
+        System.out.println(phoneNumber.substring(phoneNumber.length() - 5));
+        DateTimeFormatter PURE_DATETIME_MILLIS_FORMAT = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        String id = UUID.randomUUID().toString().replaceAll("-","").substring(0,5);
+        String randomString = PURE_DATETIME_MILLIS_FORMAT.format(LocalDateTime.now()) + id;
+        String str1 = "{\"serialNumber\":\"15513283764\",\"sign\":\"6DD067523C432FE18C42F52ED1DF970DE0D95194\",\"randomString\":\"" + randomString+ "\"}";
+        System.out.println(str1);
+        Map<String, Object> paramMap = JSONObject.parseObject(str1, Map.class);
+        System.out.println(paramMap);
+
+        String str = "-10.0";
+        System.out.println(checkNotZero(str));
+        System.out.println(str);
         System.out.println(new BigDecimal("1.232432E9").divide(new BigDecimal("10"), 0, BigDecimal.ROUND_HALF_UP).toString());
         System.out.println(String.format("%.2f", Double.parseDouble("0")));
         String appProportion = new BigDecimal("3").divide(new BigDecimal("8"), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal("100")).setScale(2, BigDecimal.ROUND_HALF_UP).toString();;

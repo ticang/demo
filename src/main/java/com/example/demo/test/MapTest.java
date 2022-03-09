@@ -7,4 +7,10 @@ package com.example.demo.test;
  */
 public class MapTest {
 
+    public static void main(String[] args) {
+        int i = 1;
+
+    }
+
+    void min()
 }
