@@ -22,7 +22,7 @@ public class stringTest {
         return false;
     }
     public static void main(String[] args) {
-
+        System.out.println(Calendar.getInstance().get(Calendar.MONTH));
         String phoneNumber = "12345678910";
         System.out.println(phoneNumber.substring(phoneNumber.length() - 5));
         DateTimeFormatter PURE_DATETIME_MILLIS_FORMAT = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");

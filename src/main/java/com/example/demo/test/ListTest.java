@@ -60,7 +60,7 @@ public class ListTest {
             put("provinceCode", "09");
             put("touchType", "RH04");
         }});
-
+        log.info("广告位推荐信息==>{}", resultList.size());
         log.info("广告位推荐信息==>{}", JSONObject.toJSONString(resultList));
         //先省份后总部
         List<Map<String, String>> filterResultList = resultList.stream().filter(x -> (!StringUtils.isEmpty(x.get("provinceCode")) && !"09".equals(x.get("provinceCode")))).collect(Collectors.toList());

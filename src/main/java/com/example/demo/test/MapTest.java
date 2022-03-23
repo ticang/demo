@@ -12,5 +12,4 @@ public class MapTest {
 
     }
 
-    void min()
 }
