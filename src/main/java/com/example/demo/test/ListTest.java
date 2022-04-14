@@ -11,6 +11,20 @@ import java.util.stream.Collectors;
 public class ListTest {
     public static void main(String[] args) {
 
+        List<Map<String, String>> areas = new ArrayList<>();
+        areas.add(new HashMap<String, String>() {{
+            put("provinceCode", "1");
+            put("touchType", "RH02");
+            put("ord", "1");
+        }});
+        areas.add(new HashMap<String, String>() {{
+            put("provinceCode", "3");
+            put("touchType", "RH02");
+            put("ord", "1");
+        }});
+        List<String> area = Arrays.asList(String.valueOf("1,2,3,4,").split(","));
+        List<Map<String, String>> areaList = areas.stream().filter(p -> area.contains(p.get("provinceCode"))).collect(Collectors.toList());
+        System.out.println(areaList);
         List<Map<String,String>> resultList = new ArrayList<>();
         resultList.add(new HashMap<String, String>() {{
                 put("provinceCode", "09");
