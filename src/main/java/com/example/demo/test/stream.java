@@ -61,6 +61,7 @@ public class stream {
                 System.out.println(areaList.hashCode());
             } else {
                 s.put("areas", areas);
+
             }
         }
         resultMap.put("resulList", resulList);
